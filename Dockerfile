@@ -20,6 +20,6 @@ RUN cd /usr/src \
     && ./configure \
     && make \
     && make install \
-    && cd / && rm -rf /usr/src/otp_src_${OTP_VERSION}
+    && cd / && rm -rf /usr/src/otp_src_${OTP_VERSION} /usr/src/otp_src_${OTP_VERSION}.tar.gz
 
 CMD ["erl"]

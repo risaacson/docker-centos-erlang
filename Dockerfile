@@ -8,7 +8,9 @@ RUN yum install -y \
     make \
     ncurses-devel \
     openssl-devel \
-    autoconf
+    autoconf \
+    git \
+    && yum clean all
 
 ENV OTP_VERSION 18.1
 

@@ -2,7 +2,11 @@ FROM centos:7
 
 MAINTAINER Richard Isaacson <richard.c.isaacson@gmail.com>
 
-RUN yum install -y \
+COPY i18n /etc/sysconfig/
+
+RUN echo 'LANG="en_US.utf8"' >> /etc/profile \
+    && echo "export LANG" >> /etc/profile \
+    && yum install -y \
     gcc \
     glibc-devel \
     make \
@@ -20,7 +24,7 @@ RUN cd /usr/src \
     && tar xf otp_src_${OTP_VERSION}.tar.gz \
     && cd otp_src_${OTP_VERSION} \
     && ./configure \
-    && make \
+    && LANG="en_US.UTF-8" make \
     && make install \
     && cd / && rm -rf /usr/src/otp_src_${OTP_VERSION} /usr/src/otp_src_${OTP_VERSION}.tar.gz
 
